@@ -1,5 +1,5 @@
 {
-  "name": "eslint-detailed-reporter",
+  "name": "eslint-html-report",
   "version": "0.9.1",
   "description": "Detailed HTML reporter for ESLINT.",
   "main": "index.js",
@@ -28,8 +28,8 @@
   ],
   "author": "Marcelo S. Portugal <marceloquarion@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/mportuga/eslint-detailed-reporter",
-  "bugs": "https://github.com/mportuga/eslint-detailed-reporter/issues",
+  "homepage": "https://github.com/justforuse/eslint-html-report",
+  "bugs": "https://github.com/justforuse/eslint-html-report/issues",
   "peerDependencies": {
     "eslint": ">=3.0.0 <9"
   },
