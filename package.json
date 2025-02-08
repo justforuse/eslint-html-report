@@ -1,20 +1,20 @@
 {
-  "name": "eslint-detailed-reporter",
-  "version": "0.9.1",
+  "name": "eslint-html-report",
+  "version": "0.10.3",
   "description": "Detailed HTML reporter for ESLINT.",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start test/e2e/e2e-server.js",
     "stop": "pm2 delete all",
     "test": "npm run command-line && npm run grunt-test",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git commit -am \"chore(CHANGELOG): Updating Changelog\"",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add .",
     "command-line": "eslint fixture/green_file.js -f lib/detailed.js -o example/success-report.html",
     "grunt-test": "grunt force:eslint",
-    "postversion": "npm run changelog && git push && git push --tags && npm publish ./"
+    "version": "npm run changelog"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mportuga/eslint-detailed-reporter.git"
+    "url": "https://github.com/justforuse/eslint-html-report.git"
   },
   "keywords": [
     "eslint",
@@ -28,8 +28,8 @@
   ],
   "author": "Marcelo S. Portugal <marceloquarion@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/mportuga/eslint-detailed-reporter",
-  "bugs": "https://github.com/mportuga/eslint-detailed-reporter/issues",
+  "homepage": "https://github.com/justforuse/eslint-html-report",
+  "bugs": "https://github.com/justforuse/eslint-html-report/issues",
   "peerDependencies": {
     "eslint": ">=3.0.0 <9"
   },

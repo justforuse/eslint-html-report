@@ -1,14 +1,13 @@
-# eslint-detailed-reporter
+# eslint-html-report
 
-[![Build](https://travis-ci.org/mportuga/eslint-detailed-reporter.svg?branch=master)](https://travis-ci.org/mportuga/eslint-detailed-reporter)
-[![npm version](https://img.shields.io/npm/v/eslint-detailed-reporter.svg)](https://www.npmjs.com/package/eslint-detailed-reporter)
-[![Downloads/month](https://img.shields.io/npm/dm/eslint-detailed-reporter.svg)](https://www.npmjs.com/package/eslint-detailed-reporter)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mportuga/eslint-detailed-reporter/blob/master/LICENSE)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eslint-detailed-reporter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![GitHub issues](https://img.shields.io/github/issues/mportuga/eslint-detailed-reporter.svg?style=flat)](https://github.com/mportuga/eslint-detailed-reporter/issues)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmportuga%2Feslint-detailed-reporter.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmportuga%2Feslint-detailed-reporter?ref=badge_shield)
+[![npm version](https://img.shields.io/npm/v/eslint-html-report.svg)](https://www.npmjs.com/package/eslint-html-report)
+[![Downloads/month](https://img.shields.io/npm/dm/eslint-html-report.svg)](https://www.npmjs.com/package/eslint-html-report)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/justforuse/eslint-html-report/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/justforuse/eslint-html-report.svg?style=flat)](https://github.com/justforuse/eslint-html-report/issues)
 
 > A Detailed HTML reporter for ESLINT based on the code written by Julian Laval for [eslint's default HTML reporter](http://eslint.org/docs/user-guide/formatters/#html) and inspired by Sven Piller's [eslint-formatter-markdown](https://github.com/sven-piller/eslint-formatter-markdown) and [mochajs](https://mochajs.org/)'s HTML coverage report.
+
+> Forked from [eslint-detailed-reporter](https://github.com/mportuga/eslint-detailed-reporter)
 
 ## Features
 
@@ -21,17 +20,18 @@
 - Ability to filter file list to just error or warning files.
 - Keyboard accessible.
 - Can return either multiple files or a single file as the result. (This feature is in BETA).
+- [**New feature**] Summary of related files per rule
 
 ## Example
 
-[Click here](http://htmlpreview.github.io/?https://github.com/mportuga/eslint-detailed-reporter/blob/master/example/example-report.html) to view an example report.
+[Click here](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/example-report.html) to view an example report.
 
-[Click here](http://htmlpreview.github.io/?https://github.com/mportuga/eslint-detailed-reporter/blob/master/example/success-report.html) to view an example success report.
+[Click here](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/success-report.html) to view an example success report.
 
 ## Installation
 
 ```sh
-npm install eslint-detailed-reporter --save-dev
+npm install eslint-html-report -D
 ```
 
 ## Usage
@@ -40,13 +40,13 @@ npm install eslint-detailed-reporter --save-dev
 
 ```sh
 # Single file
-eslint file.js -f node_modules/eslint-detailed-reporter/lib/detailed.js -o report.html
+eslint file.js -f node_modules/eslint-html-report/lib/detailed.js -o report.html
 
 # Recurse current directory
-eslint . -f node_modules/eslint-detailed-reporter/lib/detailed.js -o report.html
+eslint . -f node_modules/eslint-html-report/lib/detailed.js -o report.html
 
 # Recurse current directory with multiple files as the result
-eslint . -f node_modules/eslint-detailed-reporter/lib/detailed-multi.js -o report.html
+eslint . -f node_modules/eslint-html-report/lib/detailed-multi.js -o report.html
 ```
 
 ### With [Grunt ESLint](https://www.npmjs.com/package/grunt-eslint):
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 		eslint: {
 			options: {
 				outputFile: 'example/example-report.html',
-				format: require('eslint-detailed-reporter')
+				format: require('eslint-html-report')
 			},
 			target: ['test/**/*.js']
 		}
@@ -78,7 +78,7 @@ add --outputDirectory=<your directory here> to the command line.
 
 ```js
 var eslint   = require('gulp-eslint'),
-    reporter = require('eslint-detailed-reporter'),
+    reporter = require('eslint-html-report'),
     path     = require('path'),
     fs       = require('fs');
 
@@ -117,7 +117,7 @@ npm install -g grunt-cli
 npm test
 ```
 
-After that, just open a [pull request](https://github.com/mportuga/eslint-detailed-reporter/pulls) and I will review it when I can!
+After that, just open a [pull request](https://github.com/justforuse/eslint-html-report/pulls) and I will review it when I can!
 
 For more detailed contributing instructions checkout out our [contributing documentation](./.github/CONTRIBUTING.md)!
 
@@ -130,4 +130,4 @@ See [CHANGELOG](./CHANGELOG.md)
 [MIT](https://opensource.org/licenses/MIT) © Marcelo S. Portugal
 
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmportuga%2Feslint-detailed-reporter.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmportuga%2Feslint-detailed-reporter?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmportuga%2Feslint-html-report.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmportuga%2Feslint-html-report?ref=badge_large)
