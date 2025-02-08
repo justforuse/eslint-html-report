@@ -1,4 +1,4 @@
-## [0.10.1](https://github.com/mportuga/eslint-detailed-reporter/compare/v0.10.0...v0.10.1) (2025-02-08)
+## [0.10.2-0](https://github.com/mportuga/eslint-detailed-reporter/compare/v0.10.0...v0.10.2-0) (2025-02-08)
 
 
 

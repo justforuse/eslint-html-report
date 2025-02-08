@@ -1,6 +1,6 @@
 {
   "name": "eslint-html-report",
-  "version": "0.10.1",
+  "version": "0.10.2-0",
   "description": "Detailed HTML reporter for ESLINT.",
   "main": "index.js",
   "scripts": {
