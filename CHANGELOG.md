@@ -1,3 +1,7 @@
+## [0.10.3](https://github.com/justforuse/eslint-html-report/compare/v0.10.3-0...v0.10.3) (2025-02-08)
+
+
+
 ## [0.10.3-0](https://github.com/justforuse/eslint-html-report/compare/v0.10.2-0...v0.10.3-0) (2025-02-08)
 
 
