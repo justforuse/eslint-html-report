@@ -103,6 +103,11 @@
 		border-bottom: 1px solid #ddd;
 	}
 
+	tr.rule-result.open {
+	  position: sticky;
+		top: 0;
+	}
+
 	tr.lint-result, tr.rule-result {
 		cursor: pointer;
 		padding: 10px;
@@ -111,7 +116,7 @@
 	tr.lint-result th:not(:first-child) {
 		padding-top:10px;
 		padding-bottom:10px;
-		padding-right:10px;       
+		padding-right:10px;
 	}
 
 	tr.lint-result.bg-success {

@@ -3,13 +3,18 @@
   "version": "0.10.3",
   "description": "Detailed HTML reporter for ESLINT.",
   "main": "index.js",
+  "bin": {
+    "eslint-html-report": "./bin/cli.js"
+  },
+  "type": "module",
   "scripts": {
     "start": "pm2 start test/e2e/e2e-server.js",
     "stop": "pm2 delete all",
     "test": "npm run command-line && npm run grunt-test",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add .",
     "command-line": "eslint fixture/green_file.js -f lib/detailed.js -o example/success-report.html",
-    "grunt-test": "grunt force:eslint",
+    "grunt-test": "grunt  --gruntfile gruntfile.cjs force:eslint",
+    "dev": "eslint fixture/** -f ./lib/detailed.js -o example/example-report.html",
     "version": "npm run changelog"
   },
   "repository": {
@@ -34,19 +39,24 @@
     "eslint": ">=3.0.0 <9"
   },
   "dependencies": {
+    "commander": "^13.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@rollup/plugin-eslint": "^9.0.5",
     "conventional-changelog": "^3.1.25",
     "conventional-changelog-cli": "^2.2.2",
-    "eslint": "^8.15.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-angular": "^4.1.0",
     "eslint-plugin-lodash": "^7.4.0",
+    "globals": "^15.14.0",
     "grunt": "^1.5.3",
     "grunt-cli": "^1.4.3",
     "grunt-eslint": "^24.0.0",
     "grunt-force-task": "^3.0.0",
     "load-grunt-tasks": "^5.1.0",
-    "pm2": "^5.2.0"
+    "pm2": "^5.2.0",
+    "rollup": "^4.34.6"
   }
 }
