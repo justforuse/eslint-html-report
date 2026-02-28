@@ -37,6 +37,25 @@ npm install eslint-html-report -D
 
 ## Usage
 
+### With CLI (Standalone Command):
+
+The package provides a standalone CLI command that can automatically run ESLint and generate the HTML report:
+
+```sh
+# Run ESLint automatically and generate report with default name (eslint-report.html)
+npx eslint-html-report
+
+# Run ESLint automatically and specify output file name
+npx eslint-html-report my-report.html
+
+# Use existing ESLint JSON output
+npx eslint-html-report eslint.json report.html
+
+# Or if installed globally
+npm install -g eslint-html-report
+eslint-html-report
+```
+
 ### With [ESLint CLI](http://eslint.org/docs/user-guide/command-line-interface):
 
 ```sh

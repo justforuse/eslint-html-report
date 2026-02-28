@@ -1,77 +1,106 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-import { generateReport } from '../lib/detailed.js';
-import fs from 'fs/promises';
-import { stdin } from 'process';
-// import readline from 'readline'
+import { Command } from 'commander'
+import { generateReport } from '../lib/detailed.js'
+import fs from 'fs/promises'
+import fsSync from 'fs'
+import { execSync } from 'child_process'
+import process from 'process'
 
-// let rl = readline.createInterface({
-//     input: stdin,
-//     terminal: true
-// });
+const program = new Command()
 
-// let res = ''
-// function readLine (line) {
-//     //process your line, which could be very very long
-//     console.log('get line')
-//     res += line
-// }
-
-// rl.on('line', readLine);
-
-// rl.on("close", () => {
-//   console.log(res)
-// })
-
-// console.log('in process...')
-
-const program = new Command();
-
-async function getStdinData() {
-  const chunks = [];
-  for await (const chunk of stdin) {
-    chunks.push(chunk);
+/**
+ * Run eslint and get JSON output
+ * @returns {Promise<string>} JSON string of eslint results
+ */
+async function runEslint() {
+  try {
+    console.log('Running eslint . --format=json...')
+    const result = execSync('eslint . --format=json', {
+      encoding: 'utf-8',
+      maxBuffer: 50 * 1024 * 1024, // Increase buffer size to 50MB for large projects
+    })
+    return result
+  } catch (error) {
+    // ESLint returns non-zero exit code when there are linting errors
+    // But it still outputs the JSON to stdout
+    if (error.stdout) {
+      return error.stdout
+    }
+    throw new Error(`Failed to run eslint: ${error.message}`)
   }
-  return Buffer.concat(chunks).toString('utf8');
 }
 
 program
-  .name('oxlint-html')
-  .description('Generate HTML report from oxlint JSON output')
+  .name('eslint-html-report')
+  .description('Generate HTML report from ESLint JSON output')
   .version('1.0.0')
-  .argument('[input]', 'Input json file', 'eslint-temp.json')
+  .argument(
+    '[input]',
+    'Input JSON file (if not provided, will run eslint automatically)'
+  )
   .argument('[output]', 'Output HTML file', 'eslint-report.html')
   .action(async (input, output) => {
     try {
-      console.log(`Start generated successfully at ${output}`);
-      // Create a temporary file for the JSON input
-      let tmpFile = 'eslint-temp.json';
-      let fileName = program.args[0]
-      if (fileName) {
-        tmpFile = fileName
+      let tmpFile = null
+      let shouldCleanup = false
+      let outputFile = output
+
+      // Smart detection: if only one argument is provided
+      // Check the actual arguments passed (excluding program name and script name)
+      const actualArgs = process.argv
+        .slice(2)
+        .filter((arg) => !arg.startsWith('-'))
+
+      if (actualArgs.length === 1 && input) {
+        // Only one argument provided
+        // Check if it ends with .html (likely output file) or if the file doesn't exist (likely output file)
+        if (input.endsWith('.html') || !fsSync.existsSync(input)) {
+          // Treat as output file
+          outputFile = input
+          input = null
+        }
       }
 
-      console.log(tmpFile)
+      // Check if input file is provided
+      if (input) {
+        // Use the provided input file
+        tmpFile = input
+        console.log(`Using input file: ${tmpFile}`)
+      } else {
+        // No input file provided, run eslint automatically
+        console.log('No input file provided, running eslint automatically...')
+        tmpFile = '.eslint-temp.json'
+        shouldCleanup = true
 
-      // Read from stdin if no input file is provided
-      // const jsonData = await getStdinData();
-      // await fs.writeFile(tmpFile, jsonData);
+        // Run eslint and get JSON output
+        const eslintOutput = await runEslint()
 
-      const result = await generateReport(tmpFile, output);
-      // console.log(`✨ Report generated successfully at ${output}`);
-      // console.log(`📊 Summary:`);
-      // console.log(`   Total Issues: ${result.totalIssues}`);
-      // console.log(`   Errors: ${result.errors}`);
-      // console.log(`   Warnings: ${result.warnings}`);
+        // Write the output to a temporary file
+        await fs.writeFile(tmpFile, eslintOutput)
+        console.log(`ESLint results saved to temporary file: ${tmpFile}`)
+      }
 
-      // // Clean up temporary file
-      // await fs.unlink(tmpFile);
+      // Generate the HTML report
+      console.log(`Generating HTML report at ${outputFile}...`)
+      const result = await generateReport(tmpFile, outputFile)
+
+      console.log(`✨ Report generated successfully at ${outputFile}`)
+      console.log(`📊 Summary:`)
+      console.log(`   Total Issues: ${result.totalIssues}`)
+      console.log(`   Errors: ${result.errors}`)
+      console.log(`   Warnings: ${result.warnings}`)
+
+      // Clean up temporary file if it was created
+      if (shouldCleanup) {
+        await fs.unlink(tmpFile)
+        console.log(`Temporary file ${tmpFile} cleaned up`)
+      }
     } catch (error) {
       console.trace(error)
-      console.error('❌ Error:', error.message);
-      process.exit(1);
+      console.error('❌ Error:', error.message)
+      process.exit(1)
     }
-  });
+  })
 
-program.parse();
+program.parse()
