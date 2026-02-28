@@ -8,6 +8,19 @@
 <body>
 	<div id="overview" class="bg-<%= reportColor %>">
 		<h1>ESLint Report - <small class="text-<%= reportColor %>"><%= reportColor %></small></h1>
+		<% if (projectInfo) { %>
+		<div class="project-info">
+			<% if (projectInfo.branch) { %>
+			<span class="info-item"><strong>Branch:</strong> <%= projectInfo.branch %></span>
+			<% } %>
+			<% if (projectInfo.commit) { %>
+			<span class="info-item"><strong>Commit:</strong> <%= projectInfo.commit %></span>
+			<% } %>
+			<% if (projectInfo.timestamp) { %>
+			<span class="info-item"><strong>Generated:</strong> <%= projectInfo.timestamp %></span>
+			<% } %>
+		</div>
+		<% } %>
 	</div>
 	<div class="container">
 		<div id="summary">

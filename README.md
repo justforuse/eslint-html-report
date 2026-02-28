@@ -21,6 +21,7 @@
 - Keyboard accessible.
 - Can return either multiple files or a single file as the result. (This feature is in BETA).
 - [**New feature**] Summary of related files per rule
+- [**New feature**] Project information display (Git branch, commit ID, and generation timestamp)
 
 ## Example
 

@@ -35,6 +35,23 @@
 		border-color: #f00;
 	}
 
+	.project-info {
+		margin-top: 15px;
+		padding: 10px 0;
+		font-size: 14px;
+		color: #666;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.project-info .info-item {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	.project-info .info-item strong {
+		color: #333;
+	}
+
 	.bg-success {
 		background: #dff0d8;
 	}
@@ -108,6 +125,11 @@
 		border-bottom: 1px solid #ddd;
 	}
 
+	tr.rule-result.open {
+	  position: sticky;
+		top: 0;
+	}
+
 	tr.lint-result, tr.rule-result {
 		cursor: pointer;
 		padding: 10px;
@@ -116,7 +138,7 @@
 	tr.lint-result th:not(:first-child) {
 		padding-top:10px;
 		padding-bottom:10px;
-		padding-right:10px;       
+		padding-right:10px;
 	}
 
 	tr.lint-result.bg-success {
@@ -389,10 +411,24 @@
 		padding: 8px 12px;
 	}
 </style>
+
 </head>
 <body>
 	<div id="overview" class="bg-error">
 		<h1>ESLint Report - <small class="text-error">error</small></h1>
+		
+		<div class="project-info">
+			
+			<span class="info-item"><strong>Branch:</strong> dev-rollup</span>
+			
+			
+			<span class="info-item"><strong>Commit:</strong> cae9aed</span>
+			
+			
+			<span class="info-item"><strong>Generated:</strong> 2/28/2026, 10:39:58 AM</span>
+			
+		</div>
+		
 	</div>
 	<div class="container">
 		<div id="summary">
@@ -431,27 +467,27 @@
 			</tr>
 		</thead><tbody>
 			<tr>
-	<td><a href="#usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureAngularRulesGreetUserDirectiveJs">/fixture/angular-rules/greetUserDirective.js</a></td>
+	<td><a href="#usersAllenYuanDocumentsSelfEslintHtmlReportFixtureAngularRulesGreetUserDirectiveJs">/fixture/angular-rules/greetUserDirective.js</a></td>
 	<td>2</td>
 	<td>0</td>
 </tr>
 <tr>
-	<td><a href="#usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureOrangeFileJs">/fixture/orange_file.js</a></td>
+	<td><a href="#usersAllenYuanDocumentsSelfEslintHtmlReportFixtureOrangeFileJs">/fixture/orange_file.js</a></td>
 	<td>2</td>
 	<td>0</td>
 </tr>
 <tr>
-	<td><a href="#usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureRedFileJs">/fixture/red_file.js</a></td>
+	<td><a href="#usersAllenYuanDocumentsSelfEslintHtmlReportFixtureRedFileJs">/fixture/red_file.js</a></td>
 	<td>2</td>
 	<td>0</td>
 </tr>
 <tr>
-	<td><a href="#usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureAngularRulesGreetUserComponentJs">/fixture/angular-rules/greet-user.component.js</a></td>
+	<td><a href="#usersAllenYuanDocumentsSelfEslintHtmlReportFixtureAngularRulesGreetUserComponentJs">/fixture/angular-rules/greet-user.component.js</a></td>
 	<td>1</td>
 	<td>0</td>
 </tr>
 <tr>
-	<td><a href="#usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureGreenFileJs">/fixture/green_file.js</a></td>
+	<td><a href="#usersAllenYuanDocumentsSelfEslintHtmlReportFixtureGreenFileJs">/fixture/green_file.js</a></td>
 	<td>1</td>
 	<td>0</td>
 </tr>
@@ -464,7 +500,7 @@
 			<h2 class="page-header">Rules</h2>
 			<table id="fileOverview">
 				<tbody>
-					<tr id="" class="lint-result bg-error" data-group="f-r-0" data-problem-count="5" tabindex="0">
+					<tr id="" class="lint-result rule-result bg-error" data-group="f-r-0" data-problem-count="5" tabindex="0">
   <th class="icon-box" colspan="1">
       <span class="caret"></span>
   </th>
@@ -480,48 +516,48 @@
 					<ul>
 						<li>
                   /fixture/angular-rules/greet-user.component.js  Row: 1 Column: 1 - 'angular' is not defined.
-                  <p><pre><code>undefinedundefined
+                  <p><pre>undefinedundefined
 angular.module('myApp').
     component('greetUser', {
-        template: '<strong>Hello, {{$ctrl.user}}!</strong>',
+        template: '&lt;strong&gt;Hello, {{$ctrl.user}}!&lt;/strong&gt;',
         controller: function GreetUserController() {
-            this.user = 'world';</code></pre></p>
-                </li><br /><li>
+            this.user = 'world';</pre></p>
+                </li><hr /><li>
                   /fixture/angular-rules/greetUserDirective.js  Row: 1 Column: 1 - 'angular' is not defined.
-                  <p><pre><code>undefinedundefined
+                  <p><pre>undefinedundefined
 angular.module('myApp')
     .controller('GreetUserController', function GreetUserController($scope) {
         var users = [{name:'world'}, {name:'earth'}, {name:'planet'}, {name:'mars'}];
 
-        findFirstUser();</code></pre></p>
-                </li><br /><li>
+        findFirstUser();</pre></p>
+                </li><hr /><li>
                   /fixture/angular-rules/greetUserDirective.js  Row: 8 Column: 27 - '_' is not defined.
-                  <p><pre><code>        function findFirstUser() {
+                  <p><pre>        function findFirstUser() {
             $scope.user = _.first(users.map(function(user) {
                 return user.name;
             }));
         }
-    })</code></pre></p>
-                </li><br /><li>
+    })</pre></p>
+                </li><hr /><li>
                   /fixture/green_file.js  Row: 10 Column: 1 - 'exports' is not defined.
-                  <p><pre><code>}
+                  <p><pre>}
 exports.addOne = addOne;
 
 undefined
 undefined
-undefined</code></pre></p>
-                </li><br /><li>
+undefined</pre></p>
+                </li><hr /><li>
                   /fixture/yellow_file.js  Row: 11 Column: 1 - 'exports' is not defined.
-                  <p><pre><code>}
+                  <p><pre>}
 exports.addOne = addOne;
 
 undefined
 undefined
-undefined</code></pre></p>
+undefined</pre></p>
                 </li>
 					</ul>
 				</td>
-			</tr><tr id="" class="lint-result bg-error" data-group="f-r-1" data-problem-count="2" tabindex="0">
+			</tr><tr id="" class="lint-result rule-result bg-error" data-group="f-r-1" data-problem-count="2" tabindex="0">
   <th class="icon-box" colspan="1">
       <span class="caret"></span>
   </th>
@@ -537,24 +573,24 @@ undefined</code></pre></p>
 					<ul>
 						<li>
                   /fixture/orange_file.js  Row: 3 Column: 10 - 'addOne' is defined but never used.
-                  <p><pre><code>'use strict';
+                  <p><pre>'use strict';
 function addOne(i) {
   if (i != NaN) {
     return i ++
   } else {
-    return</code></pre></p>
-                </li><br /><li>
+    return</pre></p>
+                </li><hr /><li>
                   /fixture/red_file.js  Row: 3 Column: 10 - 'addOne' is defined but never used.
-                  <p><pre><code>'use strict';
+                  <p><pre>'use strict';
 function addOne(i) {
     if (i != NaN) {
         return i ++;
     }
-    return;</code></pre></p>
+    return;</pre></p>
                 </li>
 					</ul>
 				</td>
-			</tr><tr id="" class="lint-result bg-error" data-group="f-r-2" data-problem-count="2" tabindex="0">
+			</tr><tr id="" class="lint-result rule-result bg-error" data-group="f-r-2" data-problem-count="2" tabindex="0">
   <th class="icon-box" colspan="1">
       <span class="caret"></span>
   </th>
@@ -570,20 +606,20 @@ function addOne(i) {
 					<ul>
 						<li>
                   /fixture/orange_file.js  Row: 4 Column: 7 - Use the isNaN function to compare with NaN.
-                  <p><pre><code>function addOne(i) {
+                  <p><pre>function addOne(i) {
   if (i != NaN) {
     return i ++
   } else {
     return
-  }</code></pre></p>
-                </li><br /><li>
+  }</pre></p>
+                </li><hr /><li>
                   /fixture/red_file.js  Row: 4 Column: 9 - Use the isNaN function to compare with NaN.
-                  <p><pre><code>function addOne(i) {
+                  <p><pre>function addOne(i) {
     if (i != NaN) {
         return i ++;
     }
     return;
-};</code></pre></p>
+};</pre></p>
                 </li>
 					</ul>
 				</td>
@@ -613,7 +649,7 @@ function addOne(i) {
 			</fieldset>
 			<table id="fileOverview">
 				<tbody>
-					<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureAngularRulesGreetUserComponentJs" class="lint-result bg-error" data-group="f-0" data-problem-count="1" tabindex="0">
+					<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureAngularRulesGreetUserComponentJs" class="lint-result bg-error" data-group="f-0" data-problem-count="1" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
@@ -729,7 +765,7 @@ function addOne(i) {
 	</td>
 </tr>
 
-<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureAngularRulesGreetUserDirectiveJs" class="lint-result bg-error" data-group="f-1" data-problem-count="2" tabindex="0">
+<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureAngularRulesGreetUserDirectiveJs" class="lint-result bg-error" data-group="f-1" data-problem-count="2" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
@@ -922,7 +958,7 @@ function addOne(i) {
 	</td>
 </tr>
 
-<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureGreenFileJs" class="lint-result bg-error" data-group="f-2" data-problem-count="1" tabindex="0">
+<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureGreenFileJs" class="lint-result bg-error" data-group="f-2" data-problem-count="1" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
@@ -1058,7 +1094,7 @@ function addOne(i) {
 	</td>
 </tr>
 
-<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureOrangeFileJs" class="lint-result bg-error" data-group="f-3" data-problem-count="2" tabindex="0">
+<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureOrangeFileJs" class="lint-result bg-error" data-group="f-3" data-problem-count="2" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
@@ -1201,7 +1237,7 @@ function addOne(i) {
 	</td>
 </tr>
 
-<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureRedFileJs" class="lint-result bg-error" data-group="f-4" data-problem-count="2" tabindex="0">
+<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureRedFileJs" class="lint-result bg-error" data-group="f-4" data-problem-count="2" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
@@ -1339,7 +1375,7 @@ function addOne(i) {
 	</td>
 </tr>
 
-<tr id="usersAllenYuanDocumentsPersonalFilesSelfEslintHtmlReportFixtureYellowFileJs" class="lint-result bg-error" data-group="f-5" data-problem-count="1" tabindex="0">
+<tr id="usersAllenYuanDocumentsSelfEslintHtmlReportFixtureYellowFileJs" class="lint-result bg-error" data-group="f-5" data-problem-count="1" tabindex="0">
     <th class="icon-box" colspan="1">
         <span class="caret"></span>
     </th>
