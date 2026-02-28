@@ -7,6 +7,9 @@
     "eslint-html-report": "./bin/cli.js"
   },
   "type": "module",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "start": "pm2 start test/e2e/e2e-server.js",
     "stop": "pm2 delete all",
