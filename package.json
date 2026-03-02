@@ -1,6 +1,6 @@
 {
   "name": "eslint-html-report",
-  "version": "0.10.3",
+  "version": "1.0.0",
   "description": "A beautiful HTML report generator for ESLint with modern UI, code highlighting, and detailed analysis",
   "main": "index.js",
   "bin": {
