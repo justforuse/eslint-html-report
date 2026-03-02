@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	"extends": [
 		"eslint:recommended",
 		"plugin:lodash/recommended"
@@ -11,8 +11,8 @@ module.exports = {
 		"lodash"
 	],
 	"globals": {
-		"angular": false,
-		"_": false
+		"angular": readonly,
+		"_": readonly
 	},
 	"rules": {
 		"angular/component-limit": 2,
@@ -23,6 +23,7 @@ module.exports = {
 		"indent": [1, 4],
 		"no-else-return": 1,
 		"semi": [1, "always"],
-		"space-unary-ops": 2
+		"space-unary-ops": 2,
+		"no-undef": 1
 	}
 };

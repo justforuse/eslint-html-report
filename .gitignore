@@ -1,3 +1,8 @@
 .idea
 node_modules
 npm-debug.log
+
+eslint.json
+eslint-report.html
+.eslint-temp.json
+pnpm-*.html

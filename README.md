@@ -3,131 +3,111 @@
 [![npm version](https://img.shields.io/npm/v/eslint-html-report.svg)](https://www.npmjs.com/package/eslint-html-report)
 [![Downloads/month](https://img.shields.io/npm/dm/eslint-html-report.svg)](https://www.npmjs.com/package/eslint-html-report)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/justforuse/eslint-html-report/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/justforuse/eslint-html-report.svg?style=flat)](https://github.com/justforuse/eslint-html-report/issues)
 
-> A Detailed HTML reporter for ESLINT based on the code written by Julian Laval for [eslint's default HTML reporter](http://eslint.org/docs/user-guide/formatters/#html) and inspired by Sven Piller's [eslint-formatter-markdown](https://github.com/sven-piller/eslint-formatter-markdown) and [mochajs](https://mochajs.org/)'s HTML coverage report.
+> 🎨 A beautiful HTML reporter for ESLint with modern UI
 
 > Forked from [eslint-detailed-reporter](https://github.com/mportuga/eslint-detailed-reporter)
 
-## Features
+## ✨ Features
 
-- Total count of problems on linted files(counting both errors and warnings)
-- Tables with top 5 warnings and errors in the linted files.
-- List of top 5 files with the most problems.
-- View of source code with issues for files with issues.
-- Summary of issues per file
-- Links to the rule descriptions for all default eslint rules, as well as angular and lodash rules.
-- Ability to filter file list to just error or warning files.
-- Keyboard accessible.
-- Can return either multiple files or a single file as the result. (This feature is in BETA).
-- [**New feature**] Summary of related files per rule
+- 📊 **Summary Dashboard** - Top errors, warnings, and problematic files at a glance
+- 💻 **Source Code View** - See issues highlighted directly in your code
+- 📁 **Flexible Grouping** - View issues by file or by rule
+- 🔍 **Filter & Search** - Quickly find what you're looking for
+- 🌿 **Git Integration** - Shows branch, commit, and timestamp
+- 🎯 **Modern UI** - Clean design with ESLint branding
 
-## Example
+## 📸 Example
 
-[Click here](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/example-report.html) to view an example report.
+👉 [View example report](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/example-report.html)
 
-[Click here](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/success-report.html) to view an example success report.
+👉 [View success report](http://htmlpreview.github.io/?https://github.com/justforuse/eslint-html-report/blob/master/example/success-report.html)
 
-## Installation
+## 🚀 Quick Start
+
+```sh
+npx eslint-html-report
+```
+
+That's it! This will run ESLint and generate `eslint-report.html` in your project.
+
+## 📦 Installation
 
 ```sh
 npm install eslint-html-report -D
 ```
 
-## Usage
+## 📖 Usage
 
-### With [ESLint CLI](http://eslint.org/docs/user-guide/command-line-interface):
+### CLI (Recommended)
 
 ```sh
-# Single file
-eslint file.js -f node_modules/eslint-html-report/lib/detailed.js -o report.html
+# Auto-run ESLint and generate report
+npx eslint-html-report
 
-# Recurse current directory
-eslint . -f node_modules/eslint-html-report/lib/detailed.js -o report.html
+# Specify output file
+npx eslint-html-report my-report.html
 
-# Recurse current directory with multiple files as the result
-eslint . -f node_modules/eslint-html-report/lib/detailed-multi.js -o report.html
+# Use existing ESLint JSON output
+npx eslint-html-report eslint.json report.html
 ```
 
-### With [Grunt ESLint](https://www.npmjs.com/package/grunt-eslint):
+### With ESLint CLI
+
+```sh
+eslint . -f node_modules/eslint-html-report/lib/detailed.js -o report.html
+```
+
+### With Grunt
 
 ```js
 module.exports = function(grunt) {
-	'use strict';
+  'use strict';
 
-	require('load-grunt-tasks')(grunt);
+  require('load-grunt-tasks')(grunt);
 
-	grunt.initConfig({
-		eslint: {
-			options: {
-				outputFile: 'example/example-report.html',
-				format: require('eslint-html-report')
-			},
-			target: ['test/**/*.js']
-		}
-	});
+  grunt.initConfig({
+    eslint: {
+      options: {
+        outputFile: 'report.html',
+        format: require('eslint-html-report')
+      },
+      target: ['src/**/*.js']
+    }
+  });
 
-	grunt.registerTask('default', ['eslint']);
+  grunt.registerTask('default', ['eslint']);
 };
 ```
 
-* If you want to use the new multi file feature, you must use the full path to the detailed-multi file in the format section and
-add --outputDirectory=<your directory here> to the command line.
-
-### With [Gulp ESLint](https://github.com/adametry/gulp-eslint):
+### With Gulp
 
 ```js
-var eslint   = require('gulp-eslint'),
-    reporter = require('eslint-html-report'),
-    path     = require('path'),
-    fs       = require('fs');
+const eslint   = require('gulp-eslint');
+const reporter = require('eslint-html-report');
+const path     = require('path');
+const fs       = require('fs');
 
 gulp.src(['js/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format(reporter, function(results) {
-      fs.writeFileSync(path.join(__dirname, 'report-results.html'), results);
-    })
-  );
+    fs.writeFileSync(path.join(__dirname, 'report.html'), results);
+  }));
 ```
 
-## Dependencies
+## 🤝 Contributing
 
-- [lodash](https://github.com/lodash/lodash): Lodash modular utilities.
-
-## Dev Dependencies
-
-- [eslint](https://github.com/eslint/eslint): An AST-based pattern checker for JavaScript.
-- [eslint-config-angular](https://github.com/dustinspecker/eslint-config-angular): ESLint shareable config for Angular plugin.
-- [eslint-plugin-angular](https://github.com/Gillespie59/eslint-plugin-angular): ESLint rules for your angular project with checks for best-practices, conventions or potential errors.
-- [eslint-plugin-lodash](https://github.com/eslint-plugins/eslint-plugin-lodash): Lodash-specific linting rules for ESLint.
-- [grunt](http://gruntjs.com/): The JavaScript Task Runner.
-- [grunt-cli](https://github.com/gruntjs/grunt-cli): The Grunt command line interface.
-- [grunt-eslint](https://github.com/sindresorhus/grunt-eslint): Validate files with ESLint.
-- [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks): Load multiple grunt tasks using globbing patterns.
-
-## Contributing
-
-Feel free to contribute!
-
-Fork this repo and run the following commands to get started:
+Contributions are welcome! Feel free to open a [pull request](https://github.com/justforuse/eslint-html-report/pulls).
 
 ```sh
 npm install
-npm install -g grunt-cli
 npm test
 ```
 
-After that, just open a [pull request](https://github.com/justforuse/eslint-html-report/pulls) and I will review it when I can!
-
-For more detailed contributing instructions checkout out our [contributing documentation](./.github/CONTRIBUTING.md)!
-
-## Release History
+## 📝 Changelog
 
 See [CHANGELOG](./CHANGELOG.md)
 
-## License
+## 📄 License
 
-[MIT](https://opensource.org/licenses/MIT) © Marcelo S. Portugal
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmportuga%2Feslint-html-report.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmportuga%2Feslint-html-report?ref=badge_large)
+[MIT](https://opensource.org/licenses/MIT)
