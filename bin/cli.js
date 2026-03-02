@@ -16,9 +16,13 @@ const program = new Command()
 async function runEslint() {
   try {
     console.log('Running eslint . --format=json...')
-    const result = execSync('eslint . --format=json', {
+    console.log('Current working directory:', process.cwd())
+    
+    // Use npx to run local eslint if available, fallback to global
+    const result = execSync('npx eslint . --format=json', {
       encoding: 'utf-8',
       maxBuffer: 50 * 1024 * 1024, // Increase buffer size to 50MB for large projects
+      cwd: process.cwd()
     })
     return result
   } catch (error) {

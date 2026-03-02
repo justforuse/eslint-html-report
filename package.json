@@ -1,7 +1,7 @@
 {
   "name": "eslint-html-report",
   "version": "0.10.3",
-  "description": "Detailed HTML reporter for ESLINT.",
+  "description": "A beautiful HTML report generator for ESLint with modern UI, code highlighting, and detailed analysis",
   "main": "index.js",
   "bin": {
     "eslint-html-report": "./bin/cli.js"
@@ -26,20 +26,25 @@
   },
   "keywords": [
     "eslint",
+    "eslint-formatter",
+    "eslint-reporter",
+    "eslint-html",
+    "html-report",
+    "lint-report",
+    "code-quality",
+    "javascript",
+    "typescript",
+    "static-analysis",
     "formatter",
     "reporter",
-    "lint",
-    "html",
-    "validate",
-    "detailed",
-    "plato"
+    "cli"
   ],
   "author": "Allen <justforuse@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/justforuse/eslint-html-report",
   "bugs": "https://github.com/justforuse/eslint-html-report/issues",
   "peerDependencies": {
-    "eslint": ">=3.0.0 <9"
+    "eslint": ">=3.0.0"
   },
   "dependencies": {
     "commander": "^13.1.0",
@@ -50,7 +55,7 @@
     "@rollup/plugin-eslint": "^9.0.5",
     "conventional-changelog": "^7.1.1",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.39.3",
     "eslint-plugin-angular": "^4.1.0",
     "eslint-plugin-lodash": "^7.4.0",
     "globals": "^15.14.0",
